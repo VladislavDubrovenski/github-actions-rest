@@ -10,7 +10,9 @@ on:
         description: 'location'
         required: false
         default: 'The Octoverse'
-
+      target:
+        description: 'target'
+        required: true
 jobs:
   say_hello:
     runs-on: ubuntu-latest
@@ -21,5 +23,5 @@ jobs:
       - name: ZAP Scan
         uses: zaproxy/action-full-scan@v0.2.0
         with:
-          target: 'https://arcadisiam-dev.azurefd.net'
+          target: '${{ github.event.inputs.target }}'
           issue_title: 'Hellow_World'
