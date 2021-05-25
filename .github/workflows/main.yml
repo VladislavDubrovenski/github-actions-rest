@@ -12,7 +12,7 @@ on:
         description: 'target'
         required: true
 jobs:
-  say_hello:
+  zap_from_api:
     runs-on: ubuntu-latest
     steps:
       - run: |
