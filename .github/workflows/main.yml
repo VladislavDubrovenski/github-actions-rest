@@ -2,14 +2,12 @@ name: Manually triggered workflow
 on:
   workflow_dispatch:
     inputs:
-      name:
-        description: 'Person to greet'
+      email:
+        description: 'email'
         required: true
-        default: 'Mona the Octocat'
-      home:
-        description: 'location'
-        required: false
-        default: 'The Octoverse'
+      id:
+        description: 'id'
+        required: true
       target:
         description: 'target'
         required: true
@@ -18,10 +16,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo "Hello ${{ github.event.inputs.name }}!"
-          echo "- in ${{ github.event.inputs.home }}!"
+          echo "Email: ${{ github.event.inputs.email }}"
+          echo "Id: ${{ github.event.inputs.id }}"
+          echo "Target: ${{ github.event.inputs.target }}"
       - name: ZAP Scan
         uses: zaproxy/action-full-scan@v0.2.0
         with:
           target: '${{ github.event.inputs.target }}'
-          issue_title: 'Hellow_World'
+          issue_title: '${{ github.event.inputs.id }}${{ github.event.inputs.email }}'
