@@ -24,3 +24,4 @@ jobs:
         with:
           target: '${{ github.event.inputs.target }}'
           issue_title: '${{ github.event.inputs.id }}${{ github.event.inputs.email }}'
+          cmd_options: '-j'
